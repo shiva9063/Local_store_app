@@ -1,0 +1,136 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #f2f4f7;
+    font-family: Arial, sans-serif;
+}
+
+#login {
+    width: 600px;
+    max-width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+#login h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: green;
+}
+
+.login-options {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.login-options button {
+    width: 50%;
+    padding: 12px 5px;
+    border: 1px solid green;
+    border-radius: 6px;
+    background: white;
+    color: green;
+    cursor: pointer;
+}
+
+.login-options button.active {
+    background: green;
+    color: white;
+}
+
+#send_otp {
+    margin-top: 10px;
+    padding: 10px;
+    background: #e8f5e9;
+    color: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a,
+.signup-link a {
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#login_button {
+    width: 100%;
+    padding: 13px;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#login_button:hover {
+    background: darkgreen;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 22px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 480px) {
+    #login {
+        padding: 22px;
+    }
+}

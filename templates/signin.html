@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Local Store - Login</title>
+
+    <link rel="stylesheet" href="../static/css/signin.css">
+</head>
+<body>
+
+    <div id="login">
+
+        <h2>Welcome Back!</h2>
+        <p class="subtitle">Login to your Local Store account</p>
+
+        <!-- Login using Email or Mobile -->
+        <div class="form-group">
+            <label for="login_type">Login With :</label>
+
+            <select id="login_type" name="login_type">
+                <option value="email">Email ID</option>
+                <option value="mobile">Mobile Number</option>
+            </select>
+        </div>
+
+        <!-- Email or Mobile Input -->
+        <div class="form-group">
+            <label id="identity_label" for="identity">Email ID :</label>
+
+            <input
+                type="email"
+                id="identity"
+                name="identity"
+                placeholder="email@gmail.com"
+                maxlength="50"
+                required
+            >
+        </div>
+
+        <!-- Login Method -->
+        <div class="login-options">
+            <button type="button" id="password_btn" class="active">
+                Password
+            </button>
+
+            <button type="button" id="otp_btn">
+                Login with OTP
+            </button>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group" id="password_group">
+            <label for="password">Password :</label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+            >
+        </div>
+
+        <!-- OTP Field -->
+        <div class="form-group" id="otp_group" hidden>
+            <label for="otp">Enter OTP :</label>
+
+            <input
+                type="text"
+                id="otp"
+                name="otp"
+                placeholder="Enter 6-digit OTP"
+                maxlength="6"
+                pattern="[0-9]{6}"
+                inputmode="numeric"
+            >
+
+            <button type="button" id="send_otp">
+                Get OTP
+            </button>
+        </div>
+
+        <div class="forgot-password">
+            <a href="forgot_password.html">Forgot Password?</a>
+        </div>
+
+        <button type="submit" form="login_form" id="login_button">
+            Login
+        </button>
+
+        <form id="login_form">
+        </form>
+
+        <p class="signup-link">
+            Don't have an account?
+            <a href="signup.html">Create Account</a>
+        </p>
+
+    </div>
+
+
+
+</body>
+</html>
