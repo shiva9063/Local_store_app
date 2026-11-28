@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f4f8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+#login {
+    width: 100%;
+    max-width: 420px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#login h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+#login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.login-options {
+    display: flex;
+    gap: 10px;
+}
+
+.login-options button {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #2563eb;
+    background: white;
+    color: #2563eb;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-options button.active {
+    background: #2563eb;
+    color: white;
+}
+
+.forgot-password {
+    text-align: right;
+}
+
+.forgot-password a,
+.signup-link a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+#login_button {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#login_button:hover {
+    background: #1d4ed8;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+}
