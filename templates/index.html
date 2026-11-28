@@ -139,6 +139,8 @@
 
 
 <!-- PRODUCTS -->
+
+<!-- PRODUCTS -->
 <section class="products-section" id="products">
 
     <div class="section-heading">
@@ -150,7 +152,6 @@
         <a href="{{ url_for('home') }}">View All →</a>
     </div>
 
-
     <div class="product-grid">
 
         {% for product in products %}
@@ -158,8 +159,12 @@
         <div class="product-card">
 
             <div class="product-image">
-                <!-- <img src="{{ product.image }}" alt="{{ product.name }}"> -->
+
+                <img src="{{ url_for('static', filename='images/' + product.image) }}"
+                     alt="{{ product.name }}">
+
                 <span class="fresh-label">Fresh</span>
+
             </div>
 
             <div class="product-info">
@@ -168,20 +173,22 @@
 
                 <h3>{{ product.name }}</h3>
 
-                <!-- <p class="unit">{{ product.unit }}</p> -->
+                <p class="unit">{{ product.unit }}</p>
 
-                <!-- <div class="product-bottom">
+                <div class="product-bottom">
 
                     <strong>₹{{ product.price }}</strong>
 
                     <form action="{{ url_for('add_to_cart', product_id=product.id) }}"
                           method="POST">
-                        <button type="submit" class="add-btn">
-                            + Add
+
+                        <button type="submit" class="buy-btn">
+                            Buy
                         </button>
+
                     </form>
 
-                </div> -->
+                </div>
 
             </div>
 
@@ -196,6 +203,7 @@
     </div>
 
 </section>
+
 
 
 <!-- FOOTER -->

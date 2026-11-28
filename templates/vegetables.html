@@ -1,11 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vegetables</title>
+    <title>Fresh Vegetables - Local Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
 </head>
 <body>
-    <h2>Vegetables</h2>
+
+<header class="header">
+    <h2>🥕 Local Store</h2>
+    <nav>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="#">Account</a>
+        <a href="#">Cart 🛒</a>
+    </nav>
+</header>
+
+<section class="page-heading">
+    <h1>Fresh Vegetables 🥦</h1>
+    <p>Fresh and healthy vegetables for your kitchen.</p>
+</section>
+
+<section class="products-container">
+    {% for product in products %}
+    <div class="product-card">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}"
+             alt="{{ product.name }}">
+
+        <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <h4>₹{{ product.price }} / {{ product.unit }}</h4>
+            <p>Available: {{ product.quantity }}</p>
+            <button type="button">Add to Cart</button>
+        </div>
+    </div>
+    {% else %}
+    <p>No vegetables available right now.</p>
+    {% endfor %}
+</section>
+
 </body>
 </html>

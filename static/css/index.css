@@ -548,3 +548,33 @@ body {
 .account-dropdown:hover .dropdown-content {
     display: block;
 }
+/* BUY BUTTON */
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.product-bottom strong {
+    font-size: 18px;
+    color: #168443;
+}
+
+.buy-btn {
+    background: #168443;
+    color: white;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #105d2e;
+    transform: scale(1.05);
+}
