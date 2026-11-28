@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +6,16 @@
 
     <title>Local Store - Login</title>
 
-    <link rel="stylesheet" href="../static/css/signin.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">
 </head>
 <body>
 
-    <div id="login">
+<div id="login">
 
-        <h2>Welcome Back!</h2>
-        <p class="subtitle">Login to your Local Store account</p>
+    <h2>Welcome Back!</h2>
+    <p class="subtitle">Login to your Local Store account</p>
+
+    <form id="login_form" action="{{ url_for('login') }}" method="POST">
 
         <!-- Login using Email or Mobile -->
         <div class="form-group">
@@ -22,7 +23,7 @@
 
             <select id="login_type" name="login_type">
                 <option value="email">Email ID</option>
-                <option value="mobile">Mobile Number</option>
+                <option value="contact">Contact Number</option>
             </select>
         </div>
 
@@ -34,8 +35,9 @@
                 type="email"
                 id="identity"
                 name="identity"
-                placeholder="email@gmail.com"
+                placeholder="Enter your email"
                 maxlength="50"
+                autocomplete="email"
                 required
             >
         </div>
@@ -60,47 +62,123 @@
                 id="password"
                 name="password"
                 placeholder="Enter your password"
+                required
             >
         </div>
 
         <!-- OTP Field -->
-        <div class="form-group" id="otp_group" hidden>
+        <div class="form-group" id="otp_group" style="display:none;">
             <label for="otp">Enter OTP :</label>
 
             <input
                 type="text"
                 id="otp"
                 name="otp"
-                placeholder="Enter 6-digit OTP"
+                placeholder="Enter OTP"
                 maxlength="6"
-                pattern="[0-9]{6}"
                 inputmode="numeric"
+                disabled
             >
-
-            <button type="button" id="send_otp">
-                Get OTP
-            </button>
         </div>
 
         <div class="forgot-password">
-            <a href="forgot_password.html">Forgot Password?</a>
+            <a href="#">Forgot Password?</a>
         </div>
 
-        <button type="submit" form="login_form" id="login_button">
+        <button type="submit" id="login_button">
             Login
         </button>
 
-        <form id="login_form">
-        </form>
+    </form>
 
-        <p class="signup-link">
-            Don't have an account?
-            <a href="signup.html">Create Account</a>
-        </p>
+    <p class="signup-link">
+        Don't have an account?
+        <a href="{{ url_for('signup') }}">Create Account</a>
+    </p>
 
-    </div>
+</div>
 
+<!-- JavaScript -->
+<script>
 
+const loginType = document.getElementById("login_type");
+const identity = document.getElementById("identity");
+const identityLabel = document.getElementById("identity_label");
+
+const passwordBtn = document.getElementById("password_btn");
+const otpBtn = document.getElementById("otp_btn");
+
+const passwordGroup = document.getElementById("password_group");
+const otpGroup = document.getElementById("otp_group");
+
+const password = document.getElementById("password");
+const otp = document.getElementById("otp");
+
+// Email or Mobile Selection
+loginType.addEventListener("change", function () {
+
+    identity.value = "";
+
+    if (this.value === "email") {
+
+        identity.type = "email";
+        identity.placeholder = "Enter your email";
+        identity.maxLength = 50;
+        identity.removeAttribute("pattern");
+        identity.setAttribute("autocomplete", "email");
+
+        identityLabel.textContent = "Email ID :";
+
+    } else {
+
+        identity.type = "tel";
+        identity.placeholder = "Enter 10 digit mobile number";
+        identity.maxLength = 10;
+        identity.pattern = "[0-9]{10}";
+        identity.inputMode = "numeric";
+        identity.setAttribute("autocomplete", "tel");
+
+        identityLabel.textContent = "Contact Number :";
+
+    }
+});
+
+// Password Login
+passwordBtn.addEventListener("click", function () {
+
+    passwordGroup.style.display = "flex";
+    otpGroup.style.display = "none";
+
+    password.required = true;
+    password.disabled = false;
+
+    otp.required = false;
+    otp.disabled = true;
+
+    passwordBtn.classList.add("active");
+    otpBtn.classList.remove("active");
+
+});
+
+// OTP Login
+otpBtn.addEventListener("click", function () {
+
+    passwordGroup.style.display = "none";
+    otpGroup.style.display = "flex";
+
+    password.required = false;
+    password.disabled = true;
+
+    otp.required = true;
+    otp.disabled = false;
+
+    otpBtn.classList.add("active");
+    passwordBtn.classList.remove("active");
+
+});
+
+</script>
 
 </body>
 </html>
+```

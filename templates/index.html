@@ -1,11 +1,222 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+
+    <title>Local Store | Fresh Products</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/index.css') }}">
 </head>
+
 <body>
-    <h1>Home Page</h1>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo">
+        <span>🥬</span> Local Store
+    </div>
+
+    <div class="location">
+        <span>📍</span>
+        <div>
+            <small>Deliver to</small>
+            <strong>Gandeed Mandal ( Pin code: 509337)</strong>
+        </div>
+    </div>
+
+    <!-- SEARCH -->
+    <form class="search-box" action="{{ url_for('home') }}" method="GET">
+        <input type="text" name="search"
+               placeholder="Search fruits, vegetables, groceries..."
+               value="{{ search }}">
+        <button type="submit">🔍</button>
+    </form>
+
+<div class="header-links">
+
+    {% if user %}
+
+        <a href="{{ url_for('account') }}">
+            👤 {{ user.name }}
+        </a>
+
+    {% else %}
+
+        <a href="{{ url_for('login') }}">
+            👤 Login / Sign Up
+        </a>
+
+    {% endif %}
+
+    <a href="#">♡ Wishlist</a>
+
+    <a href="#">🛒 Cart</a>
+
+</div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('home', category='Fruits') }}">Fruits</a>
+    <a href="{{ url_for('home', category='Vegetables') }}">Vegetables</a>
+    <a href="{{ url_for('home', category='Dairy') }}">Dairy Products</a>
+    <a href="{{ url_for('home', category='Groceries') }}">Groceries</a>
+    <a href="{{ url_for('home', category='Special Offers') }}">Special Offers</a>
+</nav>
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <div class="hero-content">
+        <p class="tagline">FRESHNESS AT YOUR DOORSTEP</p>
+
+        <h1>Fresh Food.<br>Happy Life.</h1>
+
+        <p>
+            Get fresh fruits, vegetables and daily essentials
+            delivered directly to your home.
+        </p>
+
+        <a href="#products" class="shop-btn">Shop Now →</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900"
+             alt="Fresh fruits and vegetables">
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="categories">
+
+    <h2>Shop by Category</h2>
+
+    <div class="category-list">
+
+        <a href="{{ url_for('home', category='Fruits') }}" class="category-card">
+            <span>🍎</span>
+            <h3>Fruits</h3>
+        </a>
+
+        <a href="{{ url_for('home', category='Vegetables') }}" class="category-card">
+            <span>🥦</span>
+            <h3>Vegetables</h3>
+        </a>
+
+        <a href="{{ url_for('home', category='Dairy') }}" class="category-card">
+            <span>🥛</span>
+            <h3>Dairy</h3>
+        </a>
+
+        <a href="{{ url_for('home', category='Groceries') }}" class="category-card">
+            <span>🌾</span>
+            <h3>Groceries</h3>
+        </a>
+
+        <a href="#" class="category-card">
+            <span>🥚</span>
+            <h3>Eggs</h3>
+        </a>
+
+        <a href="{{ url_for('home', category='Dry Fruits') }}" class="category-card">
+            <span>🥜</span>
+            <h3>Dry Fruits</h3>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products">
+
+    <div class="section-heading">
+        <div>
+            <h2>Popular Products</h2>
+            <p>Fresh products selected for you</p>
+        </div>
+
+        <a href="{{ url_for('home') }}">View All →</a>
+    </div>
+
+
+    <div class="product-grid">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <div class="product-image">
+                <!-- <img src="{{ product.image }}" alt="{{ product.name }}"> -->
+                <span class="fresh-label">Fresh</span>
+            </div>
+
+            <div class="product-info">
+
+                <small>{{ product.category }}</small>
+
+                <h3>{{ product.name }}</h3>
+
+                <!-- <p class="unit">{{ product.unit }}</p> -->
+
+                <!-- <div class="product-bottom">
+
+                    <strong>₹{{ product.price }}</strong>
+
+                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}"
+                          method="POST">
+                        <button type="submit" class="add-btn">
+                            + Add
+                        </button>
+                    </form>
+
+                </div> -->
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <p class="no-products">No products found.</p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <h2>🥬 Local Store</h2>
+
+    <p>Your neighbourhood store, now online.</p>
+
+    <div class="footer-links">
+        <a href="#">About Us</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Help & Support</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 Local Store. All Rights Reserved.
+    </p>
+
+</footer>
+
 </body>
 </html>
